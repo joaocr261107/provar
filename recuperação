@@ -1,0 +1,85 @@
+import java.util.ArrayList;
+
+public class CidadeAcidente {
+
+	public static void main(String[] args) {
+	
+		// TODO Auto-generated method stub
+		
+		    private String nome;
+		    private int identificador;
+		    private int quantidadeVeiculos;
+		    private int numeroAcidentes;
+
+		    public Cidade (String nome, int identificador, int quantidadeVeiculos, int numeroAcidentes); 
+		    {
+		        this.nome = nome;
+		        this.identificador = identificador;
+		        this.quantidadeVeiculos = quantidadeVeiculos;
+		        this.numeroAcidentes = numeroAcidentes;
+		    }
+
+		    public String getNome() {
+		        return nome;
+		    }
+
+		    public int getIdentificador() {
+		        return identificador;
+		    }
+
+		    public int getQuantidadeVeiculos() {
+		        return quantidadeVeiculos;
+		    }
+
+		    public int getNumeroAcidentes() {
+		        return numeroAcidentes;
+		    }
+
+		    public double calcularMediaAcidentes() {
+		        return (double) numeroAcidentes / quantidadeVeiculos;
+		    
+		}
+
+		public class PesquisaCidades {
+
+		    public static void main(String[] args) {
+		        List <Cidade> cidades = new ArrayList< >();
+		        cidades.add(new Cidade("Maringá", 1, 200000, 150));
+		        cidades.add(new Cidade("Londrina", 2, 300000, 200));
+		        cidades.add(new Cidade("Cascavel", 3, 100000, 100));
+		        cidades.add(new Cidade("Ponta Grossa", 4, 150000, 120));
+		        cidades.add(new Cidade("Foz do Iguaçu", 5, 120000, 80));
+
+		        Cidade cidadeMaiorAcidentes = cidades.get(0);
+		        Cidade cidadeMenorAcidentes = cidades.get(0);
+
+		        double somaAcidentes = 0;
+		        double somaVeiculos = 0;
+
+		        for (Cidade cidade : cidades) {
+		            if (cidade.getNumeroAcidentes() > cidadeMaiorAcidentes.getNumeroAcidentes()) {
+		                cidadeMaiorAcidentes = cidade;
+		            }
+		            if (cidade.getNumeroAcidentes() < cidadeMenorAcidentes.getNumeroAcidentes()) {
+		                cidadeMenorAcidentes = cidade;
+		            }
+		            somaAcidentes += cidade.getNumeroAcidentes();
+		            somaVeiculos += cidade.getQuantidadeVeiculos();
+		        }
+
+		        System.out.println("Cidade com o maior número de acidentes: " + cidadeMaiorAcidentes.getNome());
+		        System.out.println("Cidade com o menor número de acidentes: " + cidadeMenorAcidentes.getNome());
+
+		        for (Cidade cidade : cidades) {
+		            System.out.printf("Média anual de acidentes em %s: %.2f%%\n", cidade.getNome(), cidade.calcularMediaAcidentes() * 100);
+		        }
+
+		        double mediaTotalAcidentes = somaAcidentes / somaVeiculos;
+		        System.out.printf("Média total de acidentes das cidades pesquisadas: %.2f%%\n", mediaTotalAcidentes * 100);
+		    }
+		
+
+		
+	}
+
+}
